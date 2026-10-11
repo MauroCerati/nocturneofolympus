@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100e10">
+  <meta name="description" content="Nocturne of Olympus — a Soulslike tale in Mythological Greece.">
+  <title>Nocturne of Olympus | by Artemis Atelier Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#100e10; --ivory:#eee7d8; --muted:#b9afa0; --gold:#c7a777; --line:rgba(238,231,216,.2); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ink); color:var(--ivory); font-family:'Manrope',Arial,sans-serif; font-weight:300; }
+    a { color:inherit; text-decoration:none; }
+    .hero { min-height:100svh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#100e10; }
+    /* The uploaded artwork is displayed as-is: no filters, overlays, cropping, or edits. */
+    .hero-art { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; }
+    .hero-content-layer { position:relative; z-index:1; display:flex; flex-direction:column; flex:1; }
+    header { width:min(1240px,calc(100% - 64px)); margin:0 auto; padding:30px 0; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .studio { font-size:10px; letter-spacing:.28em; text-transform:uppercase; text-shadow:0 1px 8px #000; }
+    nav { display:flex; gap:30px; }
+    nav a { font-size:10px; letter-spacing:.2em; text-transform:uppercase; text-shadow:0 1px 8px #000; transition:color .2s; }
+    nav a:hover { color:var(--gold); }
+    .hero-copy { width:min(1240px,calc(100% - 64px)); margin:auto; padding:45px 0 75px; text-shadow:0 2px 14px rgba(0,0,0,.9); }
+    .eyebrow { display:flex; align-items:center; gap:14px; color:#e2c99f; text-transform:uppercase; letter-spacing:.32em; font-size:10px; }
+    .eyebrow::before { content:""; display:block; width:36px; height:1px; background:var(--gold); }
+    h1 { font-family:'Cinzel',Georgia,serif; font-weight:400; font-size:clamp(46px,8vw,100px); line-height:1.02; letter-spacing:-.04em; margin:22px 0; max-width:800px; }
+    h1 span { display:block; color:#e2c99f; }
+    .intro { max-width:440px; color:#f0e7d8; font-size:14px; line-height:1.9; }
+    .actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:0 22px; border:1px solid var(--gold); font-size:10px; letter-spacing:.18em; text-transform:uppercase; background:rgba(16,14,16,.72); transition:background .2s,color .2s; text-shadow:none; }
+    .button.primary { background:var(--gold); color:#171214; }
+    .button:hover { background:var(--ivory); color:#171214; border-color:var(--ivory); }
+    .hero-foot { width:min(1240px,calc(100% - 64px)); margin:0 auto 28px; display:flex; justify-content:space-between; gap:18px; color:#f0e7d8; font-size:9px; letter-spacing:.18em; text-transform:uppercase; text-shadow:0 1px 8px #000; }
+    section.content { padding:100px 32px; }
+    .section-inner { width:min(1000px,100%); margin:0 auto; }
+    .section-label { color:var(--gold); font-size:10px; letter-spacing:.3em; text-transform:uppercase; }
+    h2 { font-family:'Cinzel',Georgia,serif; font-size:clamp(32px,5vw,56px); line-height:1.15; font-weight:400; margin:18px 0 24px; }
+    .about { background:var(--ink); }
+    .about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:72px; align-items:start; }
+    .about p,.closing p { color:var(--muted); line-height:2; font-size:14px; }
+    .quote { border-left:1px solid var(--gold); padding:8px 0 8px 26px; color:#d7c6ac; font-family:'Cinzel',Georgia,serif; font-size:clamp(19px,2.4vw,26px); line-height:1.65; }
+    .artwork { background:#100e10; padding:0; }
+    .artwork img { display:block; width:100%; height:auto; } /* Exact original artwork, at its natural aspect ratio. */
+    .closing { text-align:center; background:#171316; }
+    .closing h2 { max-width:740px; margin:20px auto 24px; }
+    .closing p { max-width:510px; margin:0 auto; }
+    footer { padding:26px 32px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; color:#948a7e; font-size:9px; letter-spacing:.15em; text-transform:uppercase; }
+    @media(max-width:700px) {
+      header,.hero-copy,.hero-foot { width:calc(100% - 36px); }
+      header { padding:22px 0; align-items:flex-start; }
+      nav { gap:13px; flex-wrap:wrap; justify-content:flex-end; }
+      nav a { font-size:8px; letter-spacing:.1em; }
+      .studio { max-width:100px; line-height:1.7; }
+      .hero { min-height:780px; }
+      .hero-art { object-fit:contain; object-position:center top; height:auto; min-height:0; }
+      .hero-copy { margin-top:auto; padding:320px 0 55px; }
+      .hero-content-layer { background:linear-gradient(to bottom,transparent 0%,rgba(16,14,16,.05) 30%,rgba(16,14,16,.94) 60%); }
+      section.content { padding:72px 22px; }
+      .about-grid { grid-template-columns:1fr; gap:28px; }
+      footer { padding:22px; }
+    }
+    @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *,*::before,*::after{transition:none!important} }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" id="top" aria-label="Nocturne of Olympus">
+      <img class="hero-art" src="nocturne-concept-art.jpg" alt="Original Nocturne of Olympus concept art showing a burning ancient Greek city and a lone warrior">
+      <div class="hero-content-layer">
+        <header>
+          <a class="studio" href="#top"></a>
+          <nav aria-label="Main navigation">
+            <a href="#game">The Myth</a><a href="#artwork">Concept Art</a><a href="#contact">Contact</a>
+          </nav>
+        </header>
+        <div class="hero-copy">
+          <div class="eyebrow">My eurydice was everything</div>
+          <h1>Nocturne <span>of Olympus</span></h1>
+          <p class="intro">A Soulslike of Greek Myths, music, love and betrayals.</p>
+          <div class="actions"><a class="button primary" href="#game">Synopsys</a><a class="button" href="#artwork">Concept Art</a></div>
+        </div>
+        <div class="hero-foot"><span>An original game by Artemis Atelier</span><span>In development</span></div>
+      </div>
+    </section>
+    <section class="content about" id="game">
+      <div class="section-inner about-grid">
+        <div><div class="section-label">What if Orpheus could have a second chance..</div><h2>A LOVE WORTH DEFYING DEATH FOR.</h2>
+          <p><em>Nocturne of Olympus</em> is a dark fantasy Soulslike inspired by the myths of ancient Greece. Journey through a world of the classic Greek Myths, retold from the lense of a contemporary psycological approach.</p>
+          <p>Explore a shattered world inspired by the darkest corners of Greek mythology, current Developed by Artemis Atelier, a  tiny indie studio founded by Mauro Cerati, Principle concept artist with 12+years of experience working for AAA projects. We're currently looking to develop the prototype.</p>
+        </div>
+        <div class="quote">“Reassembled from the remnants of his former self, Orpheus walks once more among the living.
+
+His world begins and ends with Eurydice.
+
+Armed with his incomplete lyre, he must reclaim his lost power and carve a path toward Tartarus.”</div>
+      </div>
+    </section>
+    <section class="artwork" id="artwork" aria-label="Original concept art">
+      <img src="nocturne-concept-art.jpg" alt="Original Nocturne of Olympus concept art, displayed without edits">
+    </section>
+
+
+    <section class="content closing" id="contact">
+      <div class="section-inner"><div class="section-label">The journey begins</div><h2>Recover the strings of your lyre, descend into the deepest reaches of the underworld.</h2>
+        <p>Follow the journey as this world takes shape.</p>
+        <div class="actions" style="justify-content:center"><a class="button primary" href="mailto:cerati.mauro@yahoo.com">Contact the studio</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> Artemis Atelier</span><span>Nocturne of Olympus · In development</span></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
